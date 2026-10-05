@@ -29,6 +29,8 @@ jobs:
           
       - name: Generate application key
         run: php artisan key:generate --env=testing
+        env:
+          DB_CONNECTION: sqlite
       
       - name: Create test database
         run: |
@@ -36,6 +38,9 @@ jobs:
       
       - name: Run migrations
         run: php artisan migrate --env=testing
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
       
       - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit
