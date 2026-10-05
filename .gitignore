@@ -22,3 +22,4 @@ yarn-error.log
 /database/snapshots
 /database/*.sqlite*
 /bootstrap/cache/*.php
+/coverage
