@@ -23,25 +23,25 @@ jobs:
       - name: Install PHP dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
       
-      - name: Create .env file
+      - name: Create test environment file
         run: |
-          cp .env.example .env || echo "APP_KEY=" > .env
-          
+          cp .env.example .env.testing
+          echo "APP_KEY=" >> .env.testing
+
       - name: Generate application key
         run: php artisan key:generate --env=testing
         env:
           DB_CONNECTION: sqlite
-      
+          DB_DATABASE: database/database.sqlite
+
       - name: Create test database
-        run: |
-          touch database/database.sqlite
-      
+        run: touch database/database.sqlite
+
       - name: Run migrations
-        run: php artisan migrate --env=testing
+        run: php artisan migrate --env=testing --database=sqlite
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-      
       - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit
 
