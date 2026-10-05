@@ -112,6 +112,6 @@
 		</div>
 	</div>
 	<x-slot name="scripts">
-		@vite('resources/js/translate.js')
+		@vite('resources/js/translate.ts')
 	</x-slot>
 </x-app-layout>
