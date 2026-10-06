@@ -7,7 +7,54 @@ on:
     branches: [ main ]
 
 jobs:
-  php-tests:
+  php-feature-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, ctype, fileinfo, pdo_sqlite, sqlite3
+          coverage: none
+
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      
+      - name: Install Node dependencies
+        run: npm ci
+      
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Create test environment file
+        run: |
+          cp .env.example .env
+          echo "APP_ENV=testing" >> .env
+          echo "APP_KEY=" >> .env
+          echo "DB_CONNECTION=sqlite" >> .env
+          echo "DB_DATABASE=database/database.sqlite" >> .env
+
+      - name: Generate application key
+        run: php artisan key:generate --env=testing
+
+      - name: Create test database
+        run: touch database/database.sqlite
+
+      - name: Run migrations
+        run: php artisan migrate --env=testing --database=sqlite --force
+
+      - name: Run PHPUnit tests
+        run: ./vendor/bin/phpunit /tests/feature
+
+  php-unit-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,31 +71,19 @@ jobs:
         run: composer install --no-interaction --prefer-dist --no-progress
 
       - name: Create test environment file
-        run: |
-          cp .env.example .env
-          cp .env.example .env.testing
-          printf '%s\n' \
-            "APP_ENV=testing" \
-            "APP_KEY=" \
-            "DB_CONNECTION=sqlite" \
-            "DB_DATABASE=database/database.sqlite" >> .env
-          printf '%s\n' \
-            "APP_ENV=testing" \
-            "APP_KEY=" \
-            "DB_CONNECTION=sqlite" \
-            "DB_DATABASE=database/database.sqlite" >> .env.testing
+        run: cp .env.example .env
 
       - name: Generate application key
-        run: php artisan key:generate --env=testing
+        run: php artisan key:generate
 
       - name: Create test database
         run: touch database/database.sqlite
 
       - name: Run migrations
-        run: php artisan migrate --env=testing --database=sqlite --force
+        run: php artisan migrate --database=sqlite --force
 
       - name: Run PHPUnit tests
-        run: ./vendor/bin/phpunit
+        run: ./vendor/bin/phpunit /tests/unit
 
   js-tests:
     runs-on: ubuntu-latest
@@ -59,7 +94,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       
       - name: Install Node dependencies
         run: npm ci

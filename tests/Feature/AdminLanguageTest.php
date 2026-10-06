@@ -7,26 +7,12 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class AdminLanguageTest extends TestCase {
-	use RefreshDatabase;
-
-	protected function debugResponse($response): void {
-		if ($response->status() >= 400) {
-			echo "\n=== Response Debug ===\n";
-			echo "Status: {$response->status()}\n";
-			if ($response->exception) {
-				echo "Exception: {$response->exception->getMessage()}\n";
-				echo "File: {$response->exception->getFile()}:{$response->exception->getLine()}\n";
-			}
-			echo "Content:\n{$response->getContent()}\n";
-			echo "=== End Debug ===\n";
-		}
-	}
+class AdminLanguageTest extends FeatureTestCase {
 
 	public function test_languages_page_is_public(): void {
 		$response = $this->get(route('languages.index'));
-		$response->$response->assertOk();
 		$this->debugResponse($response);
+		$response->assertOk();
 		$user = User::factory()->create(['is_admin' => false]);
 
 		$this->actingAs($user)
