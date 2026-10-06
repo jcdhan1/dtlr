@@ -9,9 +9,9 @@ use Toobo\Bcp47;
 class Language extends Model {
 	use HasFactory;
 
-	const BCP47_COMPONENTS = ['iso_639_3', 'iso_15924', 'iso_3166_alpha_2'];
+	const BCP_47_COMPONENTS = ['iso_639_3', 'iso_15924', 'iso_3166_alpha_2', 'variant'];
 
-	protected $fillable = ['autonym', 'metadata', 'site', 'nmt', 'iso_639_3', 'iso_15924', 'iso_3166_alpha_2', 'glottocode', 'wals'];
+	protected $fillable = ['autonym', 'metadata', 'site', 'nmt', 'iso_639_3', 'iso_15924', 'iso_3166_alpha_2', 'variant', 'glottocode', 'wals'];
 
 	protected $casts = [
 		'site' => 'boolean',
@@ -34,7 +34,7 @@ class Language extends Model {
 	public function getTag(): string {
 		// Build the language's raw tag
 		$tag = [];
-		foreach (static::BCP47_COMPONENTS as $component) {
+		foreach (static::BCP_47_COMPONENTS as $component) {
 			$value = $this->$component;
 			if (!empty($value)) {
 				$tag[] = $value;

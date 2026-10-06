@@ -76,6 +76,11 @@
 					@error('iso_3166_alpha_2')<p class="mt-1 text-sm text-rose-600">{{ $message }}</p>@enderror
 				</div>
 				<div>
+					<label for="variant" class="mb-2 block text-sm font-semibold text-slate-700">Variant</label>
+					<input id="variant" name="variant" type="text" size="8" maxlength="8" value="{{ old('variant', $language->variant) }}" class="inline-block rounded-xl border border-slate-300 px-3.5 py-2.5 font-mono text-sm text-slate-800 shadow-sm focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-100">
+					@error('variant')<p class="mt-1 text-sm text-rose-600">{{ $message }}</p>@enderror
+				</div>
+				<div>
 					<label for="glottocode" class="mb-2 block text-sm font-semibold text-slate-700">Glottocode</label>
 					<input id="glottocode" name="glottocode" type="text" size="8" maxlength="8" value="{{ old('glottocode', $language->glottocode) }}" class="inline-block rounded-xl border border-slate-300 px-3.5 py-2.5 font-mono text-sm text-slate-800 shadow-sm focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-100">
 					@error('glottocode')<p class="mt-1 text-sm text-rose-600">{{ $message }}</p>@enderror

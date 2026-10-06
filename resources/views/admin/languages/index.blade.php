@@ -31,6 +31,7 @@
 							<th scope="col" class="px-5 py-3">ISO 639-3</th>
 							<th scope="col" class="px-5 py-3">ISO 15924</th>
 							<th scope="col" class="px-5 py-3">ISO 3166-2</th>
+							<th scope="col" class="px-5 py-3">Variant</th>
 							<th scope="col" class="px-5 py-3">Glottocode</th>
 							<th scope="col" class="px-5 py-3">WALS</th>
 							<th scope="col" class="px-5 py-3" title="Whether the site can be used in this language.">Site</th>
@@ -49,6 +50,7 @@
 								<td class="whitespace-nowrap px-5 py-4 font-mono text-slate-700">{{ $language->iso_639_3 }}</td>
 								<td class="whitespace-nowrap px-5 py-4 font-mono text-slate-700">{{ $language->iso_15924 }}</td>
 								<td class="whitespace-nowrap px-5 py-4 font-mono text-slate-700">{{ $language->iso_3166_alpha_2 }}</td>
+								<td class="whitespace-nowrap px-5 py-4 font-mono text-slate-700">{{ $language->variant }}</td>
 								<td class="whitespace-nowrap px-5 py-4 hover:underline">
 									@if ($language->glottocode)
 										<a href="https://glottolog.org/resource/languoid/id/{{ $language->glottocode }}" target="_blank">{{ $language->glottocode }}</a>
@@ -85,7 +87,7 @@
 							</tr>
 						@empty
 							<tr>
-								<td colspan="{{ Auth::check() && Auth::user()->is_admin ? 9 : 8 }}" class="px-5 py-10 text-center text-slate-500">No languages have been added yet.</td>
+								<td colspan="{{ Auth::check() && Auth::user()->is_admin ? 10 : 9 }}" class="px-5 py-10 text-center text-slate-500">No languages have been added yet.</td>
 							</tr>
 						@endforelse
 					</tbody>

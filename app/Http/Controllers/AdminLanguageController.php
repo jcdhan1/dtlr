@@ -75,6 +75,7 @@ class AdminLanguageController extends Controller {
 			'iso_639_3' => ['required', 'string', 'size:3'],
 			'iso_15924' => ['nullable', 'string', 'max:4'],
 			'iso_3166_alpha_2' => ['nullable', 'string', 'max:2'],
+			'variant' => ['nullable', 'string', 'max:8'],
 			'glottocode' => ['nullable', 'string', 'max:8'],
 			'wals' => ['nullable', 'string', 'max:3'],
 		]);
