@@ -17,7 +17,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          extensions: mbstring, xml, ctype, fileinfo
+          extensions: mbstring, xml, ctype, fileinfo, pdo_sqlite, sqlite3
           coverage: none
       
       - name: Install PHP dependencies
@@ -26,6 +26,7 @@ jobs:
       - name: Create test environment file
         run: |
           cp .env.example .env.testing
+          echo "APP_ENV=testing" >> .env.testing
           echo "APP_KEY=" >> .env.testing
           echo "DB_CONNECTION=sqlite" >> .env.testing
           echo "DB_DATABASE=database/database.sqlite" >> .env.testing
@@ -38,9 +39,9 @@ jobs:
 
       - name: Create test database
         run: touch database/database.sqlite
-
+      
       - name: Run migrations
-        run: php artisan migrate --env=testing --database=sqlite
+        run: php artisan migrate --env=testing --database=sqlite --force
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
