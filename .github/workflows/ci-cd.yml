@@ -9,47 +9,43 @@ on:
 jobs:
   php-tests:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
           extensions: mbstring, xml, ctype, fileinfo, pdo_sqlite, sqlite3
           coverage: none
-      
+
       - name: Install PHP dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
-      
+
       - name: Create test environment file
         run: |
+          cp .env.example .env
           cp .env.example .env.testing
-          echo "APP_ENV=testing" >> .env.testing
-          echo "APP_KEY=" >> .env.testing
-          echo "DB_CONNECTION=sqlite" >> .env.testing
-          echo "DB_DATABASE=database/database.sqlite" >> .env.testing
-          
+          printf '%s\n' \
+            "APP_ENV=testing" \
+            "APP_KEY=" \
+            "DB_CONNECTION=sqlite" \
+            "DB_DATABASE=database/database.sqlite" >> .env
+          printf '%s\n' \
+            "APP_ENV=testing" \
+            "APP_KEY=" \
+            "DB_CONNECTION=sqlite" \
+            "DB_DATABASE=database/database.sqlite" >> .env.testing
+
       - name: Generate application key
         run: php artisan key:generate --env=testing
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
 
       - name: Create test database
         run: touch database/database.sqlite
-      
+
       - name: Run migrations
         run: php artisan migrate --env=testing --database=sqlite --force
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
-
-      - name: Debug .env
-        run: |
-          echo ".env.testing contents"
-          cat .env.testing
 
       - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit
