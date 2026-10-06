@@ -45,8 +45,6 @@ jobs:
 
       - name: Debug .env
         run: |
-          echo ".env contents"
-          cat .env
           echo ".env.testing contents"
           cat .env.testing
 
