@@ -41,6 +41,7 @@ class AdminLanguageTest extends TestCase {
 			'iso_639_3' => 'mri',
 			'iso_15924' => 'latn',
 			'iso_3166_alpha_2' => 'nz',
+			'variant' => 'variant1',
 			'glottocode' => 'maor1246',
 			'wals' => 'mao',
 		];
@@ -55,11 +56,17 @@ class AdminLanguageTest extends TestCase {
 		$this->assertSame('mri', $language->iso_639_3);
 		$this->assertSame('latn', $language->iso_15924);
 		$this->assertSame('nz', $language->iso_3166_alpha_2);
+		$this->assertSame('variant1', $language->variant);
 
 		$this->get(route('languages.clone', $language))
 			->assertOk()
 			->assertSee('value="Māori"', false)
+			->assertSee('value="variant1"', false)
 			->assertSee('&quot;family&quot;:&quot;Austronesian&quot;', false);
+
+		$this->get(route('languages.index'))
+			->assertSee('Variant')
+			->assertSee('variant1');
 
 		$cloneData = $languageData;
 		$cloneData['autonym'] = 'Te Reo Māori';

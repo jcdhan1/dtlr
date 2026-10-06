@@ -17,6 +17,10 @@ class LanguageTest extends TestCase {
 				['iso_639_3' => 'vie', 'iso_15924' => 'Latn'],
 				'vi'
 			],
+			'Arem' => [
+				['iso_639_3' => 'aem', 'variant' => 'fonipa'],
+				'aem-fonipa'
+			],
 			'American English' => [
 				['iso_639_3' => 'eng', 'iso_15924' => 'Latn', 'iso_3166_alpha_2' => 'US'],
 				'en-US'
