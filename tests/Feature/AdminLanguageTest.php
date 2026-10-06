@@ -10,9 +10,23 @@ use Tests\TestCase;
 class AdminLanguageTest extends TestCase {
 	use RefreshDatabase;
 
-	public function test_languages_page_is_public(): void {
-		$this->get(route('languages.index'))->assertOk();
+	protected function debugResponse($response): void {
+		if ($response->status() >= 400) {
+			echo "\n=== Response Debug ===\n";
+			echo "Status: {$response->status()}\n";
+			if ($response->exception) {
+				echo "Exception: {$response->exception->getMessage()}\n";
+				echo "File: {$response->exception->getFile()}:{$response->exception->getLine()}\n";
+			}
+			echo "Content:\n{$response->getContent()}\n";
+			echo "=== End Debug ===\n";
+		}
+	}
 
+	public function test_languages_page_is_public(): void {
+		$response = $this->get(route('languages.index'));
+		$response->$response->assertOk();
+		$this->debugResponse($response);
 		$user = User::factory()->create(['is_admin' => false]);
 
 		$this->actingAs($user)
