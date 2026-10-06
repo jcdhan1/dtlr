@@ -42,6 +42,14 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
+
+      - name: Debug .env
+        run: |
+          echo ".env contents"
+          cat .env
+          echo ".env.testing contents"
+          cat .env.testing
+
       - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit
 
