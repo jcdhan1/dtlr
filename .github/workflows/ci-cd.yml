@@ -35,21 +35,13 @@ jobs:
         run: npm run build
 
       - name: Create test environment file
-        run: |
-          cp .env.example .env
-          echo "APP_ENV=testing" >> .env
-          echo "APP_KEY=" >> .env
-          echo "DB_CONNECTION=sqlite" >> .env
-          echo "DB_DATABASE=database/database.sqlite" >> .env
+        run: cp .env.example .env
 
       - name: Generate application key
-        run: php artisan key:generate --env=testing
-
-      - name: Create test database
-        run: touch database/database.sqlite
+        run: php artisan key:generate
 
       - name: Run migrations
-        run: php artisan migrate --env=testing --database=sqlite --force
+        run: php artisan migrate --database=sqlite --force
 
       - name: Run PHPUnit tests
         run: ./vendor/bin/phpunit tests/Feature
@@ -75,9 +67,6 @@ jobs:
 
       - name: Generate application key
         run: php artisan key:generate
-
-      - name: Create test database
-        run: touch database/database.sqlite
 
       - name: Run migrations
         run: php artisan migrate --database=sqlite --force
