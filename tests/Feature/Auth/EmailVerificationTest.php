@@ -8,10 +8,10 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
-use Tests\Feature\FeatureTestCase;
 use Tests\TestCase;
 
-class EmailVerificationTest extends FeatureTestCase {
+class EmailVerificationTest extends TestCase {
+	use RefreshDatabase;
 
 	public function test_email_verification_screen_can_be_rendered(): void {
 		$user = User::factory()->create([
@@ -19,7 +19,7 @@ class EmailVerificationTest extends FeatureTestCase {
 		]);
 
 		$response = $this->actingAs($user)->get('/verify-email');
-		$this->debugResponse($response);
+
 		$response->assertStatus(200);
 	}
 

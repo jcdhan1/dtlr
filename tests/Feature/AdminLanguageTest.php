@@ -7,12 +7,12 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class AdminLanguageTest extends FeatureTestCase {
+class AdminLanguageTest extends TestCase {
+	use RefreshDatabase;
 
 	public function test_languages_page_is_public(): void {
-		$response = $this->get(route('languages.index'));
-		$this->debugResponse($response);
-		$response->assertOk();
+		$this->get(route('languages.index'))->assertOk();
+
 		$user = User::factory()->create(['is_admin' => false]);
 
 		$this->actingAs($user)
