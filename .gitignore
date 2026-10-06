@@ -19,7 +19,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/database/snapshots
-/database/*.sqlite*
 /bootstrap/cache/*.php
 /coverage
