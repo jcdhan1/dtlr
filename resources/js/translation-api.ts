@@ -1,48 +1,23 @@
-interface TranslationResponse {
-	error?: unknown;
-	translated_text?: unknown;
-}
+import { Client } from "@gradio/client";
+import { nmtHost, nmtKey } from "./translation-config";
 
-const isTranslationResponse = (value: unknown): value is TranslationResponse =>
-	typeof value === 'object' && value !== null;
-
-export const translate = async (
+export async function translate(
 	text: string,
-	fromLang: string,
-	toLang: string,
-	apiURL?: string,
-): Promise<string> => {
-	if (!apiURL) {
-		throw new Error('Translation service is not configured.');
+	sourceLangCode: string,
+	targetLangCode: string
+): Promise<string> {
+	const client = await Client.connect(nmtHost, { token: nmtKey });
+
+	try {
+		const result = await client.predict<string>("/run_translation", {
+			text: text,
+			source_lang: sourceLangCode.toLowerCase(),
+			target_lang: targetLangCode.toLowerCase(),
+		});
+
+		return result.data;
+	} catch (error) {
+		console.error("Translation API failed:", error);
+		return "Error connecting to translation service.";
 	}
-
-	const response = await fetch(apiURL, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'Accept': 'application/json',
-		},
-		body: JSON.stringify({ text, from: fromLang, to: toLang }),
-	});
-	const responseData: unknown = await response.json();
-
-	if (!isTranslationResponse(responseData)) {
-		throw new Error('The translation service returned an unexpected response.');
-	}
-
-	const data = responseData;
-
-	if (!response.ok) {
-		throw new Error(typeof data.error === 'string' ? data.error : `Request failed (${response.status}).`);
-	}
-
-	if (typeof data.error === 'string') {
-		throw new Error(data.error);
-	}
-
-	if (typeof data.translated_text !== 'string') {
-		throw new Error('The translation service returned an unexpected response.');
-	}
-
-	return data.translated_text;
-};
+}
