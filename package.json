@@ -7,6 +7,7 @@
 		"test": "jest"
 	},
 	"devDependencies": {
+		"@gradio/client": "^2.7.1",
 		"@tailwindcss/forms": "^0.5.2",
 		"@types/jest": "^29.5.14",
 		"alpinejs": "^3.4.2",

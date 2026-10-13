@@ -16,7 +16,7 @@ describe('translate', () => {
 			json: async () => ({ translated_text: 'Xin chào' }),
 		} as Response);
 
-		await expect(translate('Hello', 'en-GB', 'vi', 'https://nmt.example/translate'))
+		await expect(translate('Hello', 'en-GB', 'vi'))
 			.resolves.toBe('Xin chào');
 
 		expect(fetch).toHaveBeenCalledWith('https://nmt.example/translate', {
@@ -43,7 +43,7 @@ describe('translate', () => {
 			json: async () => ({ error: 'Service unavailable' }),
 		} as Response);
 
-		await expect(translate('Hello', 'en-GB', 'vi', 'https://nmt.example/translate'))
+		await expect(translate('Hello', 'en-GB', 'vi'))
 			.rejects.toThrow('Service unavailable');
 	});
 
@@ -53,7 +53,7 @@ describe('translate', () => {
 			json: async () => ({ result: 'Bonjour' }),
 		} as Response);
 
-		await expect(translate('Hello', 'en-GB', 'vi', 'https://nmt.example/translate'))
+		await expect(translate('Hello', 'en-GB', 'vi'))
 			.rejects.toThrow('The translation service returned an unexpected response.');
 	});
 });

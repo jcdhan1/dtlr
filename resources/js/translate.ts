@@ -1,6 +1,6 @@
 import { translate } from './translation-api';
 
-const tool = document.getElementById('translation-tool');
+const tool = document.getElementById('translation_tool');
 
 const initialiseTranslation = (): void => {
 	if (!tool) {
@@ -11,12 +11,12 @@ const initialiseTranslation = (): void => {
 	const outputText = tool.querySelector<HTMLTextAreaElement>('#output_text');
 	const fromLang = tool.querySelector<HTMLSelectElement>('#from_lang');
 	const toLang = tool.querySelector<HTMLSelectElement>('#to_lang');
+	const runTranslation = tool.querySelector<HTMLButtonElement>('#run_translation');
 	const saveForm = tool.querySelector<HTMLFormElement>('#save_sentence_form');
 	const saveSentenceInput = tool.querySelector<HTMLInputElement>('#save_sentence');
 	const saveLanguageInput = tool.querySelector<HTMLInputElement>('#save_language');
-	let timeoutId: ReturnType<typeof setTimeout>;
 
-	if (!inputText || !outputText || !fromLang || !toLang) {
+	if (!inputText || !outputText || !fromLang || !toLang || !runTranslation) {
 		return;
 	}
 
@@ -31,7 +31,7 @@ const initialiseTranslation = (): void => {
 		outputText.value = 'Translating...';
 
 		try {
-			outputText.value = await translate(text, fromLang.value, toLang.value, tool?.dataset.apiUrl);
+			outputText.value = await translate(text, fromLang.value, toLang.value);
 		} catch (error) {
 			outputText.value = error instanceof Error
 				? `Translation failed: ${error.message}`
@@ -46,11 +46,7 @@ const initialiseTranslation = (): void => {
 		});
 	}
 
-	inputText.addEventListener('input', () => {
-		clearTimeout(timeoutId);
-		timeoutId = setTimeout(updateTranslation, 500);
-	});
-
+	runTranslation.addEventListener('click', updateTranslation);
 	fromLang.addEventListener('change', updateTranslation);
 	toLang.addEventListener('change', updateTranslation);
 
