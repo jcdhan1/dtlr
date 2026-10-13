@@ -1,20 +1,18 @@
 import { Client } from "@gradio/client";
-
-const space = import.meta.env.VITE_NMT_HOST;
-const token = import.meta.env.VITE_NMT_KEY;
+import { nmtHost, nmtKey } from "./translation-config";
 
 export async function translate(
 	text: string,
 	sourceLangCode: string,
 	targetLangCode: string
 ): Promise<string> {
-	const client = await Client.connect(space, { token: token });
+	const client = await Client.connect(nmtHost, { token: nmtKey });
 
 	try {
 		const result = await client.predict<string>("/run_translation", {
 			text: text,
 			source_lang: sourceLangCode.toLowerCase(),
-			target_lang: targetLangCode.toLocaleLowerCase(),
+			target_lang: targetLangCode.toLowerCase(),
 		});
 
 		return result.data;
