@@ -1,4 +1,5 @@
 import { translate } from './translation-api';
+import { initTooltips } from 'flowbite';
 
 const tool = document.getElementById('translation_tool');
 
@@ -7,16 +8,19 @@ const initialiseTranslation = (): void => {
 		return;
 	}
 
+	initTooltips();
+
 	const inputText = tool.querySelector<HTMLTextAreaElement>('#input_text');
 	const outputText = tool.querySelector<HTMLTextAreaElement>('#output_text');
 	const fromLang = tool.querySelector<HTMLSelectElement>('#from_lang');
 	const toLang = tool.querySelector<HTMLSelectElement>('#to_lang');
 	const runTranslation = tool.querySelector<HTMLButtonElement>('#run_translation');
+	const copyTranslation = tool.querySelector<HTMLButtonElement>('#copy_translation');
 	const saveForm = tool.querySelector<HTMLFormElement>('#save_sentence_form');
 	const saveSentenceInput = tool.querySelector<HTMLInputElement>('#save_sentence');
 	const saveLanguageInput = tool.querySelector<HTMLInputElement>('#save_language');
 
-	if (!inputText || !outputText || !fromLang || !toLang || !runTranslation) {
+	if (!inputText || !outputText || !fromLang || !toLang || !runTranslation || !copyTranslation) {
 		return;
 	}
 
@@ -49,6 +53,7 @@ const initialiseTranslation = (): void => {
 	runTranslation.addEventListener('click', updateTranslation);
 	fromLang.addEventListener('change', updateTranslation);
 	toLang.addEventListener('change', updateTranslation);
+	copyTranslation.addEventListener('click', () => navigator.clipboard.writeText(outputText.value));
 
 	tool.querySelectorAll('.insert-sentence').forEach((item) => {
 		item.addEventListener('click', (event: Event) => {

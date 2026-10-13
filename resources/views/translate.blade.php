@@ -47,16 +47,16 @@
 								<textarea id="input_text" rows="6" class="block w-full rounded-2xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-700 shadow-sm transition placeholder:text-slate-400 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-100"></textarea>
 							</div>
 						</div>
-						<button id="run_translation" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto mt-5">
+						<button id="run_translation" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto mt-5 inline">
 							Translate
 						</button>
 
 						@auth
-							<form id="save_sentence_form" action="{{ route('translate.save') }}" method="POST" class="mt-5">
+							<form id="save_sentence_form" action="{{ route('translate.save') }}" method="POST" class="inline">
 								@csrf
 								<input type="hidden" name="language_id" id="save_language">
 								<input type="hidden" name="sentence" id="save_sentence">
-								<button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto">
+								<button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto mt-5">
 									Save Sentence
 								</button>
 							</form>
@@ -104,6 +104,14 @@
 							<div>
 								<label for="output_text" class="mb-2 block text-sm font-semibold text-slate-700">Result</label>
 								<textarea id="output_text" rows="6" class="block w-full rounded-2xl border border-slate-200 bg-slate-100 px-3.5 py-3 text-sm text-slate-700 shadow-inner placeholder:text-slate-400" readonly placeholder></textarea>
+							</div>
+
+							<button id="copy_translation" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto mt-5 inline" data-tooltip-target="copy_translation_tooltip" data-tooltip-trigger="click" data-tooltip-style="dark">
+								Copy
+							</button>
+							<div id="copy_translation_tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-lg opacity-0 tooltip">
+								Copied!
+								<div class="tooltip-arrow" data-popper-arrow></div>
 							</div>
 						</div>
 					</section>
