@@ -6,9 +6,9 @@
 	"require": {
 		"php": "8.4.*",
 		"guzzlehttp/guzzle": "^7.10",
-		"laravel/framework": "10.50.*",
+		"laravel/framework": "^10.50",
 		"laravel/sanctum": "^3.3",
-		"laravel/tinker": "^v2",
+		"laravel/tinker": "^2.8",
 		"spatie/laravel-db-snapshots": "^2.7",
 		"toobo/bcp47": "^1"
 	},
@@ -64,12 +64,24 @@
 		},
 		"policy": {
 			"advisories": {
-				"ignore": [
-					"PKSA-d5tc-s1qs-h781",
-					"PKSA-m5cs-t1y6-qpcs",
-					"PKSA-3r5d-mb8f-1qw9",
-					"PKSA-mdq4-51ck-6kdq"
-				]
+				"ignore-id": {
+					"PKSA-d5tc-s1qs-h781": {
+						"on-audit": false,
+						"reason": "Awaiting upgrade to laravel/framework:^11"
+					},
+					"PKSA-m5cs-t1y6-qpcs": {
+						"on-audit": false,
+						"reason": "Awaiting upgrade to laravel/framework:^11."
+					},
+					"PKSA-3r5d-mb8f-1qw9": {
+						"on-audit": false,
+						"reason": "Awaiting upgrade to laravel/framework:^11"
+					},
+					"PKSA-mdq4-51ck-6kdq": {
+						"on-audit": false,
+						"reason": "Awaiting upgrade to laravel/framework:^11"
+					}
+				}
 			}
 		}
 	},
