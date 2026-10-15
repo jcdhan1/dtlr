@@ -31,5 +31,7 @@
 			</main>
 		</div>
 		{{ $scripts ?? '' }}
+
+		@include('layouts.footer')
 	</body>
 </html>

@@ -48,7 +48,7 @@
 							</div>
 						</div>
 						<button id="run_translation" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto mt-5 inline">
-							Translate
+							<i class="fa-solid fa-language"></i>Translate
 						</button>
 
 						@auth
@@ -57,7 +57,7 @@
 								<input type="hidden" name="language_id" id="save_language">
 								<input type="hidden" name="sentence" id="save_sentence">
 								<button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto mt-5">
-									Save Sentence
+									<i class="fa-solid fa-floppy-disk"></i>Save Sentence
 								</button>
 							</form>
 
@@ -79,7 +79,7 @@
 													@csrf
 													@method('DELETE')
 													<button type="submit" class="rounded-lg px-2.5 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-200">
-														Delete
+														<i class="fa-regular fa-trash-can"></i>Delete
 													</button>
 												</form>
 											</li>
@@ -107,7 +107,7 @@
 							</div>
 
 							<button id="copy_translation" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:w-auto mt-5 inline" data-tooltip-target="copy_translation_tooltip" data-tooltip-trigger="click" data-tooltip-style="dark">
-								Copy
+								<i class="fa-solid fa-copy"></i>Copy
 							</button>
 							<div id="copy_translation_tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-lg opacity-0 tooltip">
 								Copied!

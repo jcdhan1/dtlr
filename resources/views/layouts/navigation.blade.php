@@ -9,6 +9,7 @@
 					</a>
 				</div>
 
+				<!-- Desktop Navigation Links -->
 				<div class="hidden items-center space-x-1 sm:ml-10 sm:flex">
 					<x-nav-link :href="route('translate')" :active="request()->routeIs('translate')">
 						{{ __('Translate') }}
@@ -19,7 +20,7 @@
 
 					@auth
 						@if(Auth::user()->is_admin)
-							<div class="hidden sm:flex sm:items-center sm:ml-3">
+							<div class="hidden sm:ml-3 sm:flex sm:items-center">
 								<x-dropdown align="right" width="48">
 									<x-slot name="trigger">
 										<button class="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-600 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600 focus:outline-none">
@@ -42,6 +43,7 @@
 				</div>
 			</div>
 
+			<!-- Desktop Auth / User Dropdown -->
 			<div class="hidden items-center sm:flex">
 				@auth
 					<x-dropdown align="right" width="48">
@@ -78,6 +80,72 @@
 					</div>
 				@endauth
 			</div>
+
+			<!-- Mobile Hamburger Button -->
+			<div class="-mr-2 flex items-center sm:hidden">
+				<button @click="open = ! open" class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 focus:outline-none">
+					<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+						<path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+						<path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mobile Responsive Navigation Menu -->
+	<div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+		<div class="space-y-1 pb-3 pt-2">
+			<x-responsive-nav-link :href="route('translate')" :active="request()->routeIs('translate')">
+				{{ __('Translate') }}
+			</x-responsive-nav-link>
+			<x-responsive-nav-link :href="route('languages.index')" :active="request()->routeIs('languages.*')">
+				{{ __('Languages') }}
+			</x-responsive-nav-link>
+
+			@auth
+				@if(Auth::user()->is_admin)
+					<div class="border-t border-slate-200 pb-1 pt-4">
+						<div class="px-4 text-xs font-medium uppercase tracking-wider text-slate-500">Admin Tools</div>
+						<div class="mt-2 space-y-1">
+							<x-responsive-nav-link :href="route('admin.export', ['format' => 'json'])">JSON Report</x-responsive-nav-link>
+							<x-responsive-nav-link :href="route('admin.export', ['format' => 'xml'])">XML Report</x-responsive-nav-link>
+							<x-responsive-nav-link :href="route('admin.export', ['format' => 'yaml'])">YAML Report</x-responsive-nav-link>
+						</div>
+					</div>
+				@endif
+			@endauth
+		</div>
+
+		<!-- Mobile Responsive Auth/Profile Settings -->
+		<div class="border-t border-slate-200 pb-3 pt-4">
+			@auth
+				<div class="px-4">
+					<div class="text-base font-medium text-slate-800">{{ Auth::user()->name }}</div>
+				</div>
+
+				<div class="mt-3 space-y-1">
+					<x-responsive-nav-link :href="route('profile.edit')">
+						{{ __('Profile') }}
+					</x-responsive-nav-link>
+
+					<form method="POST" action="{{ route('logout') }}">
+						@csrf
+						<x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+							{{ __('Log Out') }}
+						</x-responsive-nav-link>
+					</form>
+				</div>
+			@else
+				<div class="space-y-1">
+					<x-responsive-nav-link :href="route('login')">
+						{{ __('Log in') }}
+					</x-responsive-nav-link>
+					<x-responsive-nav-link :href="route('register')">
+						{{ __('Register') }}
+					</x-responsive-nav-link>
+				</div>
+			@endauth
 		</div>
 	</div>
 </nav>
