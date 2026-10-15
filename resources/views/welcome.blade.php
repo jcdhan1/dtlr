@@ -9,19 +9,21 @@
 	<div class="space-y-8 py-4">
 		<section class="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.20)] backdrop-blur-sm">
 			<div class="bg-gradient-to-br from-blue-50 via-white to-violet-50 px-6 py-12 sm:px-10 sm:py-16">
-				<p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-700">An interdisciplinary research project</p>
-				<h2 class="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl">
-					Digital Techniques for Language Revival
-				</h2>
+				<div class="lg:flex items-center">
+					<x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+					<h2 class="max-w-4xl text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl">
+						Digital Techniques for Language Revival
+					</h2>
+				</div>
 				<p class="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
 					We explore how technology can support comparative linguistics, language education, and the revitalisation and revival of languages.
 				</p>
 				<div class="mt-8 flex flex-wrap gap-3">
 					<a href="{{ route('translate') }}" class="inline-flex items-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100">
-						Explore translation tools
+						<i class="fa-solid fa-language"></i>Explore translation tools
 					</a>
 					<a href="#about" class="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700">
-						About the project
+						<i class="fa-solid fa-circle-info"></i>About the project
 					</a>
 				</div>
 			</div>
@@ -29,7 +31,7 @@
 
 		<section id="about" class="grid gap-5 md:grid-cols-3">
 			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm">
-				<p class="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">Compare</p>
+				<p class="text-xs font-bold uppercase tracking-[0.18em] text-blue-600"><i class="fa-solid fa-folder-tree"></i>Compare</p>
 				<h3 class="mt-3 text-lg font-bold text-slate-900">Comparative linguistics</h3>
 				<p class="mt-3 text-sm leading-6 text-slate-600">
 					Apply computational methods to explore language data, patterns, and relationships.
@@ -37,7 +39,7 @@
 			</article>
 
 			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm">
-				<p class="text-xs font-bold uppercase tracking-[0.18em] text-violet-600">Learn</p>
+				<p class="text-xs font-bold uppercase tracking-[0.18em] text-violet-600"><i class="fa-solid fa-spell-check"></i>Learn</p>
 				<h3 class="mt-3 text-lg font-bold text-slate-900">Language education</h3>
 				<p class="mt-3 text-sm leading-6 text-slate-600">
 					Investigate how natural language processing can contribute to language learning and educational resources.
@@ -45,7 +47,7 @@
 			</article>
 
 			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm">
-				<p class="text-xs font-bold uppercase tracking-[0.18em] text-indigo-600">Revitalise</p>
+				<p class="text-xs font-bold uppercase tracking-[0.18em] text-indigo-600"><i class="fa-solid fa-earth-asia"></i>Revitalise</p>
 				<h3 class="mt-3 text-lg font-bold text-slate-900">Language revitalisation</h3>
 				<p class="mt-3 text-sm leading-6 text-slate-600">
 					Explore digital techniques that can support efforts to revitalise and revive languages.
