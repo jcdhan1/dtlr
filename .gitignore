@@ -21,3 +21,8 @@ yarn-error.log
 /.vscode
 /bootstrap/cache/*.php
 /coverage
+deploy.sh
+unzipper.php
+.vendor_deploy_hash
+vendor.zip
+build.zip
