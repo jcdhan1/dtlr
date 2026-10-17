@@ -7,8 +7,8 @@
 	</x-slot>
 
 	<div class="space-y-8 py-4">
-		<section class="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.20)] backdrop-blur-sm">
-			<div class="bg-gradient-to-br from-blue-50 via-white to-violet-50 px-6 py-12 sm:px-10 sm:py-16">
+		<section class="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.20)] backdrop-blur-xs">
+			<div class="bg-linear-to-br from-blue-50 via-white to-violet-50 px-6 py-12 sm:px-10 sm:py-16">
 				<div class="lg:flex items-center">
 					<x-application-logo class="w-20 h-20 fill-current text-gray-500" />
 					<h2 class="max-w-4xl text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl">
@@ -19,7 +19,7 @@
 					We explore how technology can support comparative linguistics, language education, and the revitalisation and revival of languages.
 				</p>
 				<div class="mt-8 flex flex-wrap gap-3">
-					<a href="{{ route('translate') }}" class="inline-flex items-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-4 focus:ring-blue-100">
+					<a href="{{ route('translate') }}" class="inline-flex items-center rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-hidden focus:ring-4 focus:ring-blue-100">
 						<i class="fa-solid fa-language"></i>Explore translation tools
 					</a>
 					<a href="#about" class="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700">
@@ -30,7 +30,7 @@
 		</section>
 
 		<section id="about" class="grid gap-5 md:grid-cols-3">
-			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm">
+			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-xs">
 				<p class="text-xs font-bold uppercase tracking-[0.18em] text-blue-600"><i class="fa-solid fa-folder-tree"></i>Compare</p>
 				<h3 class="mt-3 text-lg font-bold text-slate-900">Comparative linguistics</h3>
 				<p class="mt-3 text-sm leading-6 text-slate-600">
@@ -38,7 +38,7 @@
 				</p>
 			</article>
 
-			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm">
+			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-xs">
 				<p class="text-xs font-bold uppercase tracking-[0.18em] text-violet-600"><i class="fa-solid fa-spell-check"></i>Learn</p>
 				<h3 class="mt-3 text-lg font-bold text-slate-900">Language education</h3>
 				<p class="mt-3 text-sm leading-6 text-slate-600">
@@ -46,7 +46,7 @@
 				</p>
 			</article>
 
-			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm">
+			<article class="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-xs">
 				<p class="text-xs font-bold uppercase tracking-[0.18em] text-indigo-600"><i class="fa-solid fa-earth-asia"></i>Revitalise</p>
 				<h3 class="mt-3 text-lg font-bold text-slate-900">Language revitalisation</h3>
 				<p class="mt-3 text-sm leading-6 text-slate-600">
@@ -62,7 +62,7 @@
 			</p>
 		</section>
 
-		<section class="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-sm">
+		<section class="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-xs">
 			<div class="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.8fr] lg:p-10">
 				<div>
 					<p class="text-xs font-bold uppercase tracking-[0.2em] text-violet-600">Current study</p>
@@ -75,7 +75,7 @@
 					</p>
 				</div>
 
-				<aside class="rounded-2xl border border-violet-100 bg-gradient-to-br from-violet-50 via-white to-blue-50 p-6">
+				<aside class="rounded-2xl border border-violet-100 bg-linear-to-br from-violet-50 via-white to-blue-50 p-6">
 					<p class="text-xs font-bold uppercase tracking-[0.18em] text-violet-700">Call for collaborators</p>
 					<h4 class="mt-3 text-lg font-bold text-slate-900">Are you a linguist or language researcher?</h4>
 					<p class="mt-3 text-sm leading-6 text-slate-600">
