@@ -10,7 +10,7 @@
 		<section class="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.20)] backdrop-blur-xs">
 			<div class="bg-linear-to-br from-blue-50 via-white to-violet-50 px-6 py-12 sm:px-10 sm:py-16">
 				<div class="lg:flex items-center">
-					<x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+					<x-application-logo class="w-20 h-20 fill-current text-gray-500 mr-4" />
 					<h2 class="max-w-4xl text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl">
 						Digital Techniques for Language Revival
 					</h2>
