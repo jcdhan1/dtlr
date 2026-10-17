@@ -23,7 +23,7 @@
 		id="{{ $id }}"
 		name="{{ $fieldName }}"
 		{{ $attributes->merge([
-			'class' => 'block w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 shadow-sm transition focus:outline-none focus:ring-4 ' . $selectedVariant,
+			'class' => 'block w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 shadow-xs transition focus:outline-hidden focus:ring-4 ' . $selectedVariant,
 		]) }}
 	>
 		@foreach ($options as $option)
