@@ -1,12 +1,9 @@
-@import '@fortawesome/fontawesome-free/css/all.min.css' layer(base);
-@import 'tailwindcss';
-
-@plugin '@tailwindcss/forms';
-@plugin 'flowbite/plugin';
+@import "tailwindcss";
+@import "flowbite";
+@plugin "@tailwindcss/forms";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
-@source '../../node_modules/flowbite/**/*.js';
 
 @theme {
   --font-sans:
