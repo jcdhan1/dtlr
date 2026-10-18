@@ -15,7 +15,7 @@
 		@vite(['resources/css/app.css', 'resources/js/app.js'])
 	</head>
 	<body class="font-sans antialiased text-slate-900">
-		<div class="min-h-screen bg-slate-100 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.10),_transparent_40%),linear-gradient(to_bottom,_#f8fafc,_#f1f5f9)]">
+		<div class="min-h-screen bg-slate-100 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.10),transparent_40%),linear-gradient(to_bottom,#f8fafc,#f1f5f9)]">
 			@include('layouts.navigation')
 
 			@if (isset($header))

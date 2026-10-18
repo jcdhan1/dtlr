@@ -7,7 +7,7 @@
 			</div>
 			@auth
 				@if (Auth::user()->is_admin)
-					<a href="{{ route('languages.create') }}" class="inline-flex items-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:from-blue-500 hover:to-indigo-500">
+					<a href="{{ route('languages.create') }}" class="inline-flex items-center rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-xs transition hover:from-blue-500 hover:to-indigo-500">
 						Add language
 					</a>
 				@endif
@@ -22,7 +22,7 @@
 			</div>
 		@endif
 
-		<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+		<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs">
 			<div class="overflow-x-auto">
 				<table class="min-w-full divide-y divide-slate-200 text-left text-sm">
 					<thead class="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">

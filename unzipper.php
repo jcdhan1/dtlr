@@ -86,9 +86,12 @@
         $response = 'No zips found.';
     }
     echo <<<HTML
-    <div class="p-4 m-4 text-sm rounded-lg text-{$color}-800 bg-green-50" role="alert">
+    <div class="p-4 m-4 text-sm rounded-lg text-{$color}-800 bg-{$color}-50" role="alert">
         <span class="font-bold">{$status}</span> {$response}
     </div>
+	<a href="/" class="mx-4 rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 p-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:from-blue-500 hover:to-indigo-500 focus:outline-hidden focus:ring-4 focus:ring-blue-100">
+		Return to home
+	</a>
 HTML;
     ?>
 
