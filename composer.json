@@ -4,7 +4,7 @@
 	"description": "Digital Techniques for Language Revival - Research project information, multilingual dictionary and machine translation UI.",
 	"license": "GPL-3.0-or-later",
 	"require": {
-		"php": "8.4.*",
+		"php": "8.4.27",
 		"guzzlehttp/guzzle": "^7.10",
 		"laravel/framework": "11.55.*",
 		"laravel/sanctum": "^4.3",
