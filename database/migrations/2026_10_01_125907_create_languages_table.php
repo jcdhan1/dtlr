@@ -18,13 +18,14 @@ return new class extends Migration {
 			$table->timestamps();
 
 			// IETF BCP 47 language tag components
-			$table->string('iso_639_3', 3)->default('zxx');
-			$table->string('iso_15924', 4)->nullable();
-			$table->string('iso_3166_alpha_2', 2)->nullable();
+			$table->string('iso_639_3', 3)->charset('ascii')->default('zxx');
+			$table->string('iso_15924', 4)->charset('ascii')->nullable();
+			$table->string('iso_3166_alpha_2', 2)->charset('ascii')->nullable();
+			$table->string('variant', 8)->charset('ascii')->nullable();
 
 			// External codes
-			$table->string('glottocode', 8)->nullable();
-			$table->string('wals', 3)->nullable();
+			$table->string('glottocode', 8)->charset('ascii')->nullable();
+			$table->string('wals', 3)->charset('ascii')->nullable();
 		});
 	}
 
